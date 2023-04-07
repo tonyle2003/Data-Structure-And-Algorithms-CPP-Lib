@@ -1,3 +1,15 @@
+/*
+Longest Common Subsequence
+
+If we are given with the two strings we have to find the longest common sub-sequence present in both of them.
+
+Example
+
+LCS for input Sequences “ABCDGH” and “AEDFHR” is “ADH” of length 3.
+LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4.
+
+*/
+
 #include <string>
 #include <cmath>
 

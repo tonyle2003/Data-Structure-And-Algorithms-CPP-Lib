@@ -8,21 +8,26 @@
 #include "lib/algorithms/dynamic/LongestCommonSubstring.h"
 #include "lib/algorithms/dynamic/WeightedActivitySelection.h"
 
+//generate libs Algorithm
+#include "lib/algorithms/generate/Binary.h"
+#include "lib/algorithms/generate/Combination.h"
+#include "lib/algorithms/generate/Permutation.h"
+
 // Greedy libs Algorithm
 
 // Searching libs Algorithm
 
 // Sorting libs Algorithm
-#include "lib/algorithms/sorting/BubbleSort.h"
-#include "lib/algorithms/sorting/BucketSort.h"
-#include "lib/algorithms/sorting/CountingSort.h"
-#include "lib/algorithms/sorting/CycleSort.h"
-#include "lib/algorithms/sorting/HeapSort.h"
-#include "lib/algorithms/sorting/InsertionSort.h"
-#include "lib/algorithms/sorting/MergeSort.h"
-#include "lib/algorithms/sorting/OddEvenSort.h"
-#include "lib/algorithms/sorting/QuickSort.h"
-#include "lib/algorithms/sorting/SelectionSort.h"
+#include "lib/algorithms/sort/BubbleSort.h"
+#include "lib/algorithms/sort/BucketSort.h"
+#include "lib/algorithms/sort/CountingSort.h"
+#include "lib/algorithms/sort/CycleSort.h"
+#include "lib/algorithms/sort/HeapSort.h"
+#include "lib/algorithms/sort/InsertionSort.h"
+#include "lib/algorithms/sort/MergeSort.h"
+#include "lib/algorithms/sort/OddEvenSort.h"
+#include "lib/algorithms/sort/QuickSort.h"
+#include "lib/algorithms/sort/SelectionSort.h"
 
 // Graph libs Data Structure
 #include "lib/data_structure/graph/Graph.h"
@@ -35,6 +40,11 @@
 using namespace std;
 
 int main() {
-
+    int array[] = {1, 2, 3, 4};
+    Permutation::next(array, 4);
+    for (int i = 0; i < 4; i++) {
+        cout << array[i] << " ";
+    }
+    cout << endl;
     return 0;
 }

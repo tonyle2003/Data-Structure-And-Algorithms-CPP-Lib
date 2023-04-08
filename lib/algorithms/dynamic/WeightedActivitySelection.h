@@ -209,7 +209,8 @@ class Activity {
         int profit;
         int accProf;
     public:
-        bool operator < (int);
+        bool operator < (Activity);
+        friend istream& operator>>(istream&, Activity&);
         Activity();
         Activity(string, int, int, int);
         string getName();
@@ -225,8 +226,17 @@ class Activity {
 };
 
 // operator overloading of Activity class
-bool Activity::operator<(int finish_time) {
-    return this->finish_time < finish_time;
+bool Activity::operator<(Activity another) {
+    return this->finish_time < another.finish_time;
+}
+
+istream& operator>>(istream& input, Activity& activity) {
+    input >> activity.name;
+    input >> activity.start_time;
+    input >> activity.finish_time;
+    input >> activity.profit;
+    activity.accProf = activity.profit;
+    return input;
 }
 
 // constructor of Activity class

@@ -36,34 +36,5 @@ using namespace std;
 
 int main() {
 
-    // testing lib EditDistance.h
-
-    // testing lib FibonacciNumber.h
-
-    // testing lib LongestCommonSubsequence.h
-
-    // testing lib LongestCommonSubstring.h
-
-    // testing lib WeightedActivitySelection.h
-    /*
-        intput:
-            6
-            A 2 5 6
-            B 6 7 4
-            C 7 9 2
-            D 1 3 5
-            E 5 8 11
-            F 4 6 5
-        output:
-            17
-    */
-    // int n;
-    // cin >> n;
-    // Activity job[n];
-    // for (int i = 0; i < n; i++) {
-    //     cin >> job[i];
-    // }
-    // cout << WeightedActivitySelection::getMaxProfit(job, n) << endl;
-
     return 0;
 }

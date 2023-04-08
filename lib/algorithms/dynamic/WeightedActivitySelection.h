@@ -203,31 +203,54 @@ class WeightedActivitySelection {
     private:
         class Activity {
             private:
+                string name;
                 int start_time;
                 int finish_time;
                 int profit;
                 int accProf;
             public:
                 bool operator < (int);
-                Activity(int, int, int);
+                Activity(string, int, int, int);
+                string getName();
+                int getStartTime();
+                int getFinishTime();
+                int getProfit();
                 int getAccProf();
                 void setAccProf(int);
         };
         
         vector<Activity> activities;
     public:
-        void addActivity(int, int, int);
+        void addActivity(string, int, int, int);
+        int getMaxProfit();
 };
 
-bool WeightedActivitySelection::Activity::operator < (int profit) {
-    return this->profit < profit;
+bool WeightedActivitySelection::Activity::operator < (int finish_time) {
+    return this->finish_time < finish_time;
 }
 
-WeightedActivitySelection::Activity::Activity(int start_time, int finish_time, int profit) {
+WeightedActivitySelection::Activity::Activity(string name, int start_time, int finish_time, int profit) {
+    this->name = name;
     this->start_time = start_time;
     this->finish_time = finish_time;
     this->profit = profit;
     this->accProf = profit;
+}
+
+string WeightedActivitySelection::Activity::getName() {
+    return this->name;
+}
+
+int WeightedActivitySelection::Activity::getStartTime() {
+    return this->start_time;
+}
+
+int WeightedActivitySelection::Activity::getFinishTime() {
+    return this->finish_time;
+}
+
+int WeightedActivitySelection::Activity::getProfit() {
+    return this->profit;
 }
 
 int WeightedActivitySelection::Activity::getAccProf() {
@@ -236,4 +259,29 @@ int WeightedActivitySelection::Activity::getAccProf() {
 
 void WeightedActivitySelection::Activity::setAccProf(int profit) {
     this->accProf = profit;
+}
+
+void WeightedActivitySelection::addActivity(string name, int start_time, int finish_time, int profit) {
+    WeightedActivitySelection::Activity newActivity(name, start_time, finish_time, profit);
+    this->activities.push_back(newActivity);
+}
+
+int WeightedActivitySelection::getMaxProfit() {
+    sort(activities.begin(), activities.end());
+    for (int i = 1; i < activities.size(); i++) {
+        for (int j = 0; j < i; j++) {
+            if (activities[j].getFinishTime() <= activities[i].getStartTime()) {
+                if (activities[j].getAccProf() + activities[i].getProfit() > activities[i].getAccProf()) {
+                    activities[i].setAccProf(activities[j].getAccProf() + activities[i].getProfit());
+                }
+            }
+        }
+    }
+    int maxProfit = 0;
+    for (int i = 0; i < activities.size(); i++) {
+        if (maxProfit < activities[i].getAccProf()) {
+            maxProfit = activities[i].getAccProf();
+        }
+    }
+    return maxProfit;
 }

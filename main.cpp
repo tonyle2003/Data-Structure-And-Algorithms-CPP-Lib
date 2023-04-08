@@ -18,24 +18,10 @@
 // Searching libs Algorithm
 
 // Sorting libs Algorithm
-#include "lib/algorithms/sort/BubbleSort.h"
-#include "lib/algorithms/sort/BucketSort.h"
-#include "lib/algorithms/sort/CountingSort.h"
-#include "lib/algorithms/sort/CycleSort.h"
-#include "lib/algorithms/sort/HeapSort.h"
-#include "lib/algorithms/sort/InsertionSort.h"
-#include "lib/algorithms/sort/MergeSort.h"
-#include "lib/algorithms/sort/OddEvenSort.h"
-#include "lib/algorithms/sort/QuickSort.h"
-#include "lib/algorithms/sort/SelectionSort.h"
 
 // Graph libs Data Structure
-#include "lib/data_structure/graph/Graph.h"
-#include "lib/data_structure/graph/UndirectedGraph.h"
 
 // Tree libs Data Structure
-#include "lib/data_structure/tree/BinarySearchTree.h"
-#include "lib/data_structure/tree/Tree.h"
 
 using namespace std;
 

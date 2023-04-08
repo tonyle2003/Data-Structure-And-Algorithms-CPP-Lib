@@ -2,6 +2,7 @@
 #include <iostream>
 
 // Dynamic libs Algorithm
+#include "lib/algorithms/dynamic/EditDistance.h"
 #include "lib/algorithms/dynamic/FibonacciNumber.h"
 #include "lib/algorithms/dynamic/LongestCommonSubsequence.h"
 #include "lib/algorithms/dynamic/LongestCommonSubstring.h"

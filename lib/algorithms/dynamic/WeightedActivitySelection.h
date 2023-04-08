@@ -196,40 +196,46 @@ job schedule via this procedure.
 
 #include <vector>
 #include <algorithm>
+#include <limits>
 
 using namespace std;
 
-class WeightedActivitySelection {
+// class for Activity
+class Activity {
     private:
-        class Activity {
-            private:
-                string name;
-                int start_time;
-                int finish_time;
-                int profit;
-                int accProf;
-            public:
-                bool operator < (int);
-                Activity(string, int, int, int);
-                string getName();
-                int getStartTime();
-                int getFinishTime();
-                int getProfit();
-                int getAccProf();
-                void setAccProf(int);
-        };
-        
-        vector<Activity> activities;
+        string name;
+        int start_time;
+        int finish_time;
+        int profit;
+        int accProf;
     public:
-        void addActivity(string, int, int, int);
-        int getMaxProfit();
+        bool operator < (int);
+        Activity();
+        Activity(string, int, int, int);
+        string getName();
+        int getStartTime();
+        int getFinishTime();
+        int getProfit();
+        int getAccProf();
+        void setName(string);
+        void setStartTime(int);
+        void setFinishTime(int);
+        void setProfit(int);
+        void setAccProf(int);
 };
 
-bool WeightedActivitySelection::Activity::operator < (int finish_time) {
+// operator overloading of Activity class
+bool Activity::operator<(int finish_time) {
     return this->finish_time < finish_time;
 }
 
-WeightedActivitySelection::Activity::Activity(string name, int start_time, int finish_time, int profit) {
+// constructor of Activity class
+Activity::Activity() {
+    this->name = "NULL";
+    this->start_time = this->finish_time = this->profit = this->accProf = INT_MIN;
+}
+
+Activity::Activity(string name, int start_time, int finish_time, int profit) {
     this->name = name;
     this->start_time = start_time;
     this->finish_time = finish_time;
@@ -237,50 +243,69 @@ WeightedActivitySelection::Activity::Activity(string name, int start_time, int f
     this->accProf = profit;
 }
 
-string WeightedActivitySelection::Activity::getName() {
+// getter of Activity class
+string Activity::getName() {
     return this->name;
 }
 
-int WeightedActivitySelection::Activity::getStartTime() {
+int Activity::getStartTime() {
     return this->start_time;
 }
 
-int WeightedActivitySelection::Activity::getFinishTime() {
+int Activity::getFinishTime() {
     return this->finish_time;
 }
 
-int WeightedActivitySelection::Activity::getProfit() {
+int Activity::getProfit() {
     return this->profit;
 }
 
-int WeightedActivitySelection::Activity::getAccProf() {
+int Activity::getAccProf() {
     return this->accProf;
 }
 
-void WeightedActivitySelection::Activity::setAccProf(int profit) {
+// setter of Activity class
+void Activity::setName(string name) {
+    this->name = name;
+}
+
+void Activity::setStartTime(int start_time) {
+    this->start_time = start_time;
+}
+
+void Activity::setFinishTime(int finish_time) {
+    this->finish_time = finish_time;
+}
+
+void Activity::setProfit(int profit) {
+    this->profit = profit;
+}
+
+void Activity::setAccProf(int profit) {
     this->accProf = profit;
 }
 
-void WeightedActivitySelection::addActivity(string name, int start_time, int finish_time, int profit) {
-    WeightedActivitySelection::Activity newActivity(name, start_time, finish_time, profit);
-    this->activities.push_back(newActivity);
-}
+// class to solve the problem Weighted Activity Selection
+class WeightedActivitySelection {
+    public:
+        static int getMaxProfit(Activity*, int);
+};
 
-int WeightedActivitySelection::getMaxProfit() {
-    sort(activities.begin(), activities.end());
-    for (int i = 1; i < activities.size(); i++) {
+int WeightedActivitySelection::getMaxProfit(Activity* job, int size) {
+    sort(job, job + size);
+    for (int i = 1; i < size; i++) {
         for (int j = 0; j < i; j++) {
-            if (activities[j].getFinishTime() <= activities[i].getStartTime()) {
-                if (activities[j].getAccProf() + activities[i].getProfit() > activities[i].getAccProf()) {
-                    activities[i].setAccProf(activities[j].getAccProf() + activities[i].getProfit());
+            if (job[j].getFinishTime() <= job[i].getStartTime()) {
+                if (job[j].getAccProf() + job[i].getProfit() > job[i].getAccProf()) {
+                    job[i].setAccProf(job[j].getAccProf() + job[i].getProfit());
                 }
             }
         }
     }
     int maxProfit = 0;
-    for (int i = 0; i < activities.size(); i++) {
-        if (maxProfit < activities[i].getAccProf()) {
-            maxProfit = activities[i].getAccProf();
+    for (int i = 0; i < size; i++) {
+        if (maxProfit < job[i].getAccProf()) {
+            maxProfit = job[i].getAccProf();
         }
     }
     return maxProfit;

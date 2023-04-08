@@ -6,6 +6,7 @@
 #include "lib/algorithms/dynamic/FibonacciNumber.h"
 #include "lib/algorithms/dynamic/LongestCommonSubsequence.h"
 #include "lib/algorithms/dynamic/LongestCommonSubstring.h"
+#include "lib/algorithms/dynamic/WeightedActivitySelection.h"
 
 // Greedy libs Algorithm
 

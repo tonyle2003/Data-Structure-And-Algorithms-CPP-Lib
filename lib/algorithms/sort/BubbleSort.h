@@ -5,7 +5,7 @@ using namespace std;
 template <typename T, typename U>
 class BubbleSort {
 
-    static_assert(std::is_arithmetic<T>::value 
+    static_assert(!std::is_same<T, bool>::value 
                 && std::is_integral<U>::value
                 && !std::is_same<U, bool>::value
                 && !std::is_same<U, char>::value,

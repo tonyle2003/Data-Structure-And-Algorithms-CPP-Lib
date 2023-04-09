@@ -24,7 +24,7 @@ bool Combination<T, U>::next(T* array, U n, U k) {
         return true;
     } else {
         array[index]++;
-        for (int i = index + 1; i < k; i++) {
+        for (U i = index + 1; i < k; i++) {
             array[i] = array[i - 1] + 1;
         }
         return false;

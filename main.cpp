@@ -13,6 +13,9 @@
 #include "lib/algorithms/generate/Combination.h"
 #include "lib/algorithms/generate/Permutation.h"
 
+// sorting libs algorithm
+#include "lib/algorithms/sort/BubbleSort.h"
+
 // Greedy libs Algorithm
 
 // Searching libs Algorithm
@@ -26,10 +29,10 @@
 using namespace std;
 
 int main() {
-    int array[] = {1, 2, 3, 4};
-    Permutation::next(array, 4);
-    for (int i = 0; i < 4; i++) {
-        cout << array[i] << " ";
+    int array[] = {6,5,3,1,8,7,2,4};
+    BubbleSort<int, int>::sort(array, 8);
+    for (int e : array) {
+        cout << e << " ";
     }
     cout << endl;
     return 0;

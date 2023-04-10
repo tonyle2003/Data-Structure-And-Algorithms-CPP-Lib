@@ -11,8 +11,10 @@ class MergeSort {
                && !is_same<U, char>::value,
                "Error data type.");
 
-    public:
+    private:
         static void merge(T*, U, U, U);
+
+    public:
         static void sort(T*, U, U);
 };
 

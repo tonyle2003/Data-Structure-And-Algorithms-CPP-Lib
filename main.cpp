@@ -15,6 +15,7 @@
 
 // sorting libs algorithm
 #include "lib/algorithms/sort/BubbleSort.h"
+#include "lib/algorithms/sort/MergeSort.h"
 
 // Greedy libs Algorithm
 
@@ -30,7 +31,7 @@ using namespace std;
 
 int main() {
     int array[] = {6,5,3,1,8,7,2,4};
-    BubbleSort<int, int>::sort(array, 8);
+    MergeSort<int, int>::sort(array, 0, 7);
     for (int e : array) {
         cout << e << " ";
     }

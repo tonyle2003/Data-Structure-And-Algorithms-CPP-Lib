@@ -5,11 +5,11 @@ using namespace std;
 template <typename T, typename U>
 class Permutation {
 
-    static_assert(!std::is_same<T, bool>::value
-               && std::is_integral<U>::value
-               && !std::is_same<U, bool>::value
-               && !std::is_same<U, char>::value,
-               "Error type.");
+    static_assert(!is_same<T, bool>::value
+               && is_integral<U>::value
+               && !is_same<U, bool>::value
+               && !is_same<U, char>::value,
+               "Error data type.");
 
     public:
         static bool next(T*, U);

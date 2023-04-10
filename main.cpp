@@ -21,8 +21,6 @@
 
 // Searching libs Algorithm
 
-// Sorting libs Algorithm
-
 // Graph libs Data Structure
 
 // Tree libs Data Structure

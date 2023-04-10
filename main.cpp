@@ -20,6 +20,7 @@
 #include "lib/algorithms/sort/InsertionSort.h"
 #include "lib/algorithms/sort/MergeSort.h"
 #include "lib/algorithms/sort/QuickSort.h"
+#include "lib/algorithms/sort/SelectionSort.h"
 
 // Greedy libs Algorithm
 
@@ -33,7 +34,7 @@ using namespace std;
 
 int main() {
     int array[] = {6,5,3,1,8,7,2,4};
-    HeapSort<int, int>::sort(array, 8);
+    SelectionSort<int, int>::sort(array, 8);
     for (int e : array) {
         cout << e << " ";
     }

@@ -24,18 +24,29 @@ We need to replace m with c and remove character c and then replace h with t
 
 #include <string>
 #include <math.h>
+#include <type_traits>
 
 using namespace std;
 
+template<typename T>
 class EditDistance {
+
+    static_assert(
+        !is_same<T, string>::value
+        && !is_same<T, bool>::value
+        && !is_same<T, char>::value,
+        "Error data type."
+    );
+
     public:
-        static int getMinConversions(string, string);
+        static T getMinConversions(string, string);
 };
 
-int EditDistance::getMinConversions(string str1, string str2) {
-    int table[str1.length() + 1][str2.length() + 1];
-    for (int i = 0; i <= str1.length(); i++) {
-        for (int j = 0; j <= str2.length(); j++) {
+template<typename T>
+T EditDistance<T>::getMinConversions(string str1, string str2) {
+    T table[str1.length() + 1][str2.length() + 1];
+    for (T i = 0; i <= str1.length(); i++) {
+        for (T j = 0; j <= str2.length(); j++) {
             if (i == 0) {
                 table[i][j] = j;
             } else if (j == 0) {

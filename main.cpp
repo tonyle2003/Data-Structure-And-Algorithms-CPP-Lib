@@ -33,11 +33,8 @@
 using namespace std;
 
 int main() {
-    int array[] = {6,5,3,1,8,7,2,4};
-    SelectionSort<int, int>::sort(array, 8);
-    for (int e : array) {
-        cout << e << " ";
-    }
-    cout << endl;
+    
+    cout << LongestCommonSubstring<int>::getLongestCommonSubstring("zxabcdezy", "yzabcdezx") << endl;
+    
     return 0;
 }

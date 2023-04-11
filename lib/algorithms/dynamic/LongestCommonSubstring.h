@@ -16,19 +16,30 @@ The longest common substring is "abcdez" and is of length 6.
 
 #include <string>
 #include <values.h>
+#include <type_traits>
 
 using namespace std;
 
+template<typename T>
 class LongestCommonSubstring {
+
+    static_assert(
+        !is_same<T, string>::value
+        && !is_same<T, bool>::value
+        && !is_same<T, char>::value,
+        "Error data type."
+    );
+
     public:
-        static int getLongestCommonSubstring(string, string);
+        static T getLongestCommonSubstring(string, string);
 };
 
-int LongestCommonSubstring::getLongestCommonSubstring(string str1, string str2) {
-    int table[str2.length() + 1][str1.length() + 1];
-    int max = INT_MIN;
-    for (int i = 1; i <= str2.length(); i++) {
-        for (int j = 1; j <= str1.length(); j++) {
+template<typename T>
+T LongestCommonSubstring<T>::getLongestCommonSubstring(string str1, string str2) {
+    T table[str2.length() + 1][str1.length() + 1];
+    T max = INT_MIN;
+    for (T i = 1; i <= str2.length(); i++) {
+        for (T j = 1; j <= str1.length(); j++) {
             if (str1[j - 1] == str2[i - 1]) {
                 table[i][j] = table[i - 1][j - 1] + 1;
                 if (table[i][j] > max) {

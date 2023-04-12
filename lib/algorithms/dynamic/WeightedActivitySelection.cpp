@@ -2,12 +2,12 @@
 
 Weighted Job Scheduling Algorithm
 
-Weighted Job Scheduling Algorithm can also be denoted as Weighted Activity Selection Algorithm.
+Weighted Job Scheduling Algorithm can also be denoted as Weighted WeightedActivity Selection Algorithm.
 
 The problem is, given certain jobs with their start time and end time, and a profit you make when you finish the job,
 what is the maximum profit you can make given no two jobs can be executed in parallel?
 
-This one looks like Activity Selection using Greedy Algorithm, but there's an added twist. That is, instead of
+This one looks like WeightedActivity Selection using Greedy Algorithm, but there's an added twist. That is, instead of
 maximizing the number of jobs finished, we focus on making the maximum profit. The number of jobs performed
 doesn't matter here.
 
@@ -200,8 +200,8 @@ job schedule via this procedure.
 
 using namespace std;
 
-// class for Activity
-class Activity {
+// class for WeightedActivity
+class WeightedActivity {
     private:
         string name;
         int start_time;
@@ -209,10 +209,10 @@ class Activity {
         int profit;
         int accProf;
     public:
-        bool operator < (Activity);
-        friend istream& operator>>(istream&, Activity&);
-        Activity();
-        Activity(string, int, int, int);
+        bool operator < (WeightedActivity);
+        friend istream& operator>>(istream&, WeightedActivity&);
+        WeightedActivity();
+        WeightedActivity(string, int, int, int);
         string getName();
         int getStartTime();
         int getFinishTime();
@@ -225,27 +225,27 @@ class Activity {
         void setAccProf(int);
 };
 
-// operator overloading of Activity class
-bool Activity::operator<(Activity another) {
+// operator overloading of WeightedActivity class
+bool WeightedActivity::operator<(WeightedActivity another) {
     return this->finish_time < another.finish_time;
 }
 
-istream& operator>>(istream& input, Activity& activity) {
-    input >> activity.name;
-    input >> activity.start_time;
-    input >> activity.finish_time;
-    input >> activity.profit;
-    activity.accProf = activity.profit;
+istream& operator>>(istream& input, WeightedActivity& WeightedActivity) {
+    input >> WeightedActivity.name;
+    input >> WeightedActivity.start_time;
+    input >> WeightedActivity.finish_time;
+    input >> WeightedActivity.profit;
+    WeightedActivity.accProf = WeightedActivity.profit;
     return input;
 }
 
-// constructor of Activity class
-Activity::Activity() {
+// constructor of WeightedActivity class
+WeightedActivity::WeightedActivity() {
     this->name = "NULL";
     this->start_time = this->finish_time = this->profit = this->accProf = INT_MIN;
 }
 
-Activity::Activity(string name, int start_time, int finish_time, int profit) {
+WeightedActivity::WeightedActivity(string name, int start_time, int finish_time, int profit) {
     this->name = name;
     this->start_time = start_time;
     this->finish_time = finish_time;
@@ -253,55 +253,55 @@ Activity::Activity(string name, int start_time, int finish_time, int profit) {
     this->accProf = profit;
 }
 
-// getter of Activity class
-string Activity::getName() {
+// getter of WeightedActivity class
+string WeightedActivity::getName() {
     return this->name;
 }
 
-int Activity::getStartTime() {
+int WeightedActivity::getStartTime() {
     return this->start_time;
 }
 
-int Activity::getFinishTime() {
+int WeightedActivity::getFinishTime() {
     return this->finish_time;
 }
 
-int Activity::getProfit() {
+int WeightedActivity::getProfit() {
     return this->profit;
 }
 
-int Activity::getAccProf() {
+int WeightedActivity::getAccProf() {
     return this->accProf;
 }
 
-// setter of Activity class
-void Activity::setName(string name) {
+// setter of WeightedActivity class
+void WeightedActivity::setName(string name) {
     this->name = name;
 }
 
-void Activity::setStartTime(int start_time) {
+void WeightedActivity::setStartTime(int start_time) {
     this->start_time = start_time;
 }
 
-void Activity::setFinishTime(int finish_time) {
+void WeightedActivity::setFinishTime(int finish_time) {
     this->finish_time = finish_time;
 }
 
-void Activity::setProfit(int profit) {
+void WeightedActivity::setProfit(int profit) {
     this->profit = profit;
 }
 
-void Activity::setAccProf(int profit) {
+void WeightedActivity::setAccProf(int profit) {
     this->accProf = profit;
 }
 
-// class to solve the problem Weighted Activity Selection
-class WeightedActivitySelection {
+// class to solve the problem Weighted WeightedActivity Selection
+class WeightedWeightedActivitySelection {
     public:
-        static int getMaxProfit(Activity*, int);
+        static int getMaxProfit(WeightedActivity*, int);
 };
 
-int WeightedActivitySelection::getMaxProfit(Activity* job, int size) {
+int WeightedWeightedActivitySelection::getMaxProfit(WeightedActivity* job, int size) {
     sort(job, job + size);
     for (int i = 1; i < size; i++) {
         for (int j = 0; j < i; j++) {

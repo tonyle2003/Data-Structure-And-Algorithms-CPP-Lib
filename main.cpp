@@ -36,8 +36,14 @@
 using namespace std;
 
 int main() {
-    
-    cout << LongestCommonSubstring<int>::getLongestCommonSubstring("zxabcdezy", "yzabcdezx") << endl;
-    
+    Activity<int> activities[6];
+    activities[0] = Activity<int>(0, 1, 2);
+    activities[1] = Activity<int>(1, 3, 4);
+    activities[2] = Activity<int>(2, 0, 6);
+    activities[3] = Activity<int>(3, 5, 7);
+    activities[4] = Activity<int>(4, 8, 9);
+    activities[5] = Activity<int>(5, 5, 9);
+    ActivitySelection<int>::selectedActivities(activities, 6);
+    cout << ActivitySelection<int>::getMaxActivities(activities, 6) << endl;
     return 0;
 }

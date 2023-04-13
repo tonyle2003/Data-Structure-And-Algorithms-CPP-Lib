@@ -1,6 +1,9 @@
 // Standard libs
 #include <iostream>
 
+// BruteForce libs Algorithm
+#include "lib/algorithms/BruteForce/TravellingSalesman.cpp"
+
 // Dynamic libs Algorithm
 #include "lib/algorithms/dynamic/EditDistance.cpp"
 #include "lib/algorithms/dynamic/FibonacciNumber.cpp"
@@ -36,14 +39,11 @@
 using namespace std;
 
 int main() {
-    Activity<int> activities[6];
-    activities[0] = Activity<int>(0, 1, 2);
-    activities[1] = Activity<int>(1, 3, 4);
-    activities[2] = Activity<int>(2, 0, 6);
-    activities[3] = Activity<int>(3, 5, 7);
-    activities[4] = Activity<int>(4, 8, 9);
-    activities[5] = Activity<int>(5, 5, 9);
-    ActivitySelection<int>::selectedActivities(activities, 6);
-    cout << ActivitySelection<int>::getMaxActivities(activities, 6) << endl;
+    int **graph = new int*[4];
+    graph[0] = new int[4] {0, 10, 15, 20};
+    graph[1] = new int[4] {10, 0, 35, 25};
+    graph[2] = new int[4] {15, 35, 0, 30};
+    graph[3] = new int[4] {20, 25, 30, 0};
+    cout << TravellingSalesman<int>::getMinCost(graph, 4) << endl;
     return 0;
 }
